@@ -1074,20 +1074,12 @@ self.Float32Array = self.Float32Array || Array;
             filterRGB: function(src, dst, threshold) {
                 var srcLength = src.length|0, srcLength_16 = (srcLength - 16)|0;
                 var j = 0;
-                var coeff_r = 16384, coeff_g = 0, coeff_b = 0; // sum = 16384
 
-                /*for (var i = 0; i <= srcLength_16; i += 16, j += 4) {
-                    dst[j]     = ((src[i] < threshold ? 0 : src[i]) * coeff_r + src[i+1] * coeff_g + src[i+2] * coeff_b + 8192) >> 14;
-                    dst[j + 1] = ((src[i+4] < threshold ? 0 : src[i]) * coeff_r + src[i+5] * coeff_g + src[i+6] * coeff_b + 8192) >> 14;
-                    dst[j + 2] = ((src[i+8] < threshold ? 0 : src[i]) * coeff_r + src[i+9] * coeff_g + src[i+10] * coeff_b + 8192) >> 14;
-                    dst[j + 3] = ((src[i+12] < threshold ? 0 : src[i]) * coeff_r + src[i+13] * coeff_g + src[i+14] * coeff_b + 8192) >> 14;
-                }*/
-                var r, g, b;
+                var r;
                 for (var i = 0; i < srcLength; i += 4, j++) {
-                    r = src[i] - threshold.r, g = src[i+1] - threshold.g, b = src[i+2] - threshold.b;
+                    r = src[i] - threshold.r;
 
-                    dst[j] = ((r < 0 ? 0 : r) * coeff_r + (g < 0 ? 0 : g) * coeff_g + (b < 0 ? 0 : b) * coeff_b + 8192) >> 14;
-                    dst[j] = dst[j] < 200 ? 0 : 0xff;
+                    dst[j] = r < 0 ? 0 : r;
                 }
             },
 
