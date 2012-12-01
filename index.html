@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MultiXmas</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <style>
+        body
+        {
+            margin:0;
+            background: #000;
+        }
+        canvas
+        {
+            background: #000;
+        }
+        form
+        {
+            text-align: center;
+            margin: 40% 0 60% 0;
+        }
+        input[type=text]
+        {
+            font-size: 2em;
+            border: none;
+            width: 8em;
+            padding: 0.4em;
+        }
+        button
+        {
+            font-size: 2em;
+            border: 0;
+            background: #333;
+            color: #fff;
+            padding: 1em 2em;
+            margin-top: 1em;
+        }
+    </style>
+
+</head>
+<body>
+
+    <script>
+        function go()
+        {
+            form.style.display = 'none';
+
+            socket.emit("login", login.value);
+
+            return false;
+        }
+    </script>
+    <form id="form" onsubmit="return go();">
+        <input type="text" id="login" placeholder="Dit navn" /><br />
+        <button>GO</button>
+    </form>
+
+    <!--<textarea id="debug" style="width: 320px; height: 50px"></textarea>-->
+
+    <!--<video id="webcam" width="640" height="480" style="display:none"></video>-->
+
+    <script src="libs/jsfeat.js"></script>
+    <script src="libs/compatibility.js"></script>
+    <script src="libs/dat.gui.min.js"></script>
+    <script src="libs/easeljs.min.js"></script>
+    <script src="libs/Fullscreen.js"></script>
+    <script src="libs/socket.io.min.js"></script>
+    <script src="Main.js"></script>
+    <script src="Client.js"></script>
+    <!--<script src="Laser.js"></script>-->
+
+</body>
+</html>
