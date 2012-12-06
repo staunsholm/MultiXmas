@@ -10,7 +10,7 @@ var players = {};
 var connected = false;
 
 //var socket = io.connect('http://staunsholm.multixmas.jit.su:80/overview');
-var socket = io.connect('http://192.168.0.3:8101/overview');
+var socket = io.connect('http://172.17.2.94:8101/overview');
 socket.on('players', function (data)
 {
     var now = Date.now();
@@ -34,6 +34,7 @@ socket.on('players', function (data)
                     player.puzzleBitmap = puzzleBitmap;
 
                     var r = puzzleBitmap.sourceRect;
+                    console.log(r);
                     socket.emit("image", {id: dataItem.id, src: puzzleBitmap.image.src, rect: [r.x, r.y, r.width, r.height]});
 
                     break;

@@ -1073,13 +1073,9 @@ self.Float32Array = self.Float32Array || Array;
         return {
             filterRGB: function(src, dst, threshold) {
                 var srcLength = src.length|0, srcLength_16 = (srcLength - 16)|0;
-                var j = 0;
 
-                var r;
-                for (var i = 0; i < srcLength; i += 4, j++) {
-                    r = src[i] - threshold.r;
-
-                    dst[j] = r < 0 ? 0 : r;
+                for (var i = 0, j = 0; i < srcLength; i += 4, j++) {
+                    dst[j] = src[i] - threshold.r < 0 || src[i+1] > 100 ? 0 : 0xff;
                 }
             },
 

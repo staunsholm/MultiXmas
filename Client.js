@@ -3,7 +3,7 @@ var id;
 var connected = false;
 
 //var socket = io.connect('http://staunsholm.multixmas.jit.su:80/client');
-var socket = io.connect('http://192.168.0.3:8101/client');
+var socket = io.connect('http://172.17.2.94:8101/client');
 
 socket.on('id', function (data)
 {

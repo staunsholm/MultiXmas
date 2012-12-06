@@ -12,7 +12,7 @@ io.of("/client").on('connection', function (socket)
         x: 160,
         y: 160,
         lastUpdate: Date.now(),
-        dirty: 1
+        dirty: 0
     };
 
     players.push(player);
